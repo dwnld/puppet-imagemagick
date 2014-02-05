@@ -21,10 +21,10 @@ class Imagemagick < Formula
 
   depends_on 'jpeg' => :recommended
   depends_on :libpng => :recommended
-  depends_on :freetype => :recommended
+  depends_on :freetype
 
   depends_on :x11 => :optional
-  depends_on :fontconfig => :optional
+  depends_on :fontconfig
   depends_on 'libtiff' => :optional
   depends_on 'little-cms' => :optional
   depends_on 'jasper' => :optional
@@ -70,8 +70,8 @@ class Imagemagick < Formula
     args << "--with-quantum-depth=#{quantum_depth}" if quantum_depth
     args << "--with-rsvg" if build.with? 'rsvg'
     args << "--without-x" unless build.with? 'x'
-    args << "--with-fontconfig=yes" if build.with? 'fontconfig' or MacOS::X11.installed?
-    args << "--with-freetype=yes" if build.with? 'freetype' or MacOS::X11.installed?
+    args << "--with-fontconfig=yes" if true or build.with? 'fontconfig' or MacOS::X11.installed?
+    args << "--with-freetype=yes" if true or build.with? 'freetype' or MacOS::X11.installed?
 
     # versioned stuff in main tree is pointless for us
     inreplace 'configure', '${PACKAGE_NAME}-${PACKAGE_VERSION}', '${PACKAGE_NAME}'
