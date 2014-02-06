@@ -72,6 +72,7 @@ class Imagemagick < Formula
     args << "--without-x" unless build.with? 'x'
     args << "--with-fontconfig=yes" if true or build.with? 'fontconfig' or MacOS::X11.installed?
     args << "--with-freetype=yes" if true or build.with? 'freetype' or MacOS::X11.installed?
+    args << "--with-ttf=yes"
 
     # versioned stuff in main tree is pointless for us
     inreplace 'configure', '${PACKAGE_NAME}-${PACKAGE_VERSION}', '${PACKAGE_NAME}'
